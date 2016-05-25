@@ -1,0 +1,33 @@
+## Logs
+
+Install Lamp Stack:
+
+Apache first
+MySQL
+PHP: Need the mbstring, curl, pdo, openssl, tokenizer and common extensions (5.5+)
+phpMyAdmin
+Setup mysql users and db for laravel install
+
+
+Install nodejs
+Install Composer
+Install redis
+
+Create new laravel instance
+
+Configure with above install information in .env file.
+
+# GIT PUSH
+
+Put SmartAdmin assets in /public/*
+
+# GIT PUSH
+
+Build html wrappers for main/landlord/tenant
+
+# GIT PUSH
+
+Build Migrations and Models (Authentication)
+
+# GIT PUSH
+
