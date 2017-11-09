@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en-us" class="no-js">
+<html lang="en-us" class="no-js" ng-app="app">
 	<head>
-	
 		<meta charset="utf-8">
 		<title> Real Estate</title>
 		<meta name="description" content="">
@@ -11,21 +10,27 @@
 
 		<!-- #CSS Links -->
 		<!-- Basic Styles -->
-		<link rel="stylesheet" type="text/css" media="screen" href="{{url('/')}}/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="{{url('/')}}/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" media="screen" href="{{url('/')}}/css/style.css">
-		
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/font-awesome.min.css">
 
+		<!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/smartadmin-production-plugins.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/smartadmin-skins.min.css">
+		
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/smartadmin-angular.css">
+
+		<!-- SmartAdmin RTL Support (Not using RTL? Disable the CSS below to save bandwidth) -->
+		<link rel="stylesheet" type="text/css" media="screen" href="styles/css/smartadmin-rtl.min.css">
 	</head>
 
-	<body>
+	<body 	data-smart-device-detect
+			data-smart-fast-click
+			data-smart-layout
+			data-smart-page-title="SmartAdmin AngularJS">
+
 		<div id="sidebar">
-			@if(Auth::guest())
-				<ul class="nav nav-pills nav-stacked">
-					<li role="presentation"><a href="{{url('/')}}/login">Login</a></li>
-					<li role="presentation"><a href="{{url('/')}}/register">Sign up</a></li>
-				</ul>
-			@elseif(Auth::user()->type == 1)
+			@if(Auth::user()->type == 1)
 				<ul class="nav nav-pills nav-stacked">
 					<li role="presentation"><a href="{{url('/')}}/landlord/dashboard">Dashboard</a></li>
 					<li role="presentation"><a href="{{url('/')}}/landlord/property">Properties</a></li>
@@ -51,30 +56,10 @@
 		</div>
 
 		<div class="content">
-			@if(Session::has('error'))
-				<div class="alert alert-danger alert-dismissible" role="alert">
-  					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  					<p class="text-center">
-	  					<strong>Error!</strong> {{Session::get('error')}}
-	  				</p>
-				</div>
-				<?php Session::forget('error'); ?>
-			@endif
-			@if(Session::has('success'))
-				<div class="alert alert-success alert-dismissible" role="alert">
-  					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  					<p class="text-center">
-	  					<strong>Success!</strong> {{Session::get('success')}}
-	  				</p>
-				</div>
-				<?php Session::forget('success'); ?>
-			@endif
-
-			@yield('content')
-			
+			<div data-ui-view="root"  data-autoscroll="false"></div>
 		</div>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		<script src="{{url('/')}}/bootstrap/js/bootstrap.min.js"></script>
+		<script src="build/vendor.js"></script>
+		<script src="build/eljon.js"></script>
 	</body>
 </html>
